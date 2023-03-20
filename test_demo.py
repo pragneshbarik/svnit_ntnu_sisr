@@ -15,12 +15,12 @@ def select_model(args, device):
     # Model ID is assigned according to the order of the submissions.
     # Different networks are trained with input range of either [0,1] or [0,255]. The range is determined manually.
     model_id = args.model_id
-    if model_id == 0:
+    if model_id == 6:
         # RFDN baseline, AIM 2020 Efficient SR Challenge winner
-        from models.team00_RFDN import RFDN
-        name, data_range = f"{model_id:02}_RFDN_baseline", 255.0
-        model_path = os.path.join('model_zoo', 'team00_rfdn.pth')
-        model = RFDN()
+        from models.team06_sisr import ProposedNetwork
+        name, data_range = f"{model_id:06}_SISR", 255.0
+        model_path = os.path.join('model_zoo', 'team06_sisr.pth')
+        model = ProposedNetwork()
         model.load_state_dict(torch.load(model_path), strict=True)
 
         # # SwinIR baseline, ICCVW 2021
